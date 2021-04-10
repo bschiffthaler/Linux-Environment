@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Title</title>
+		<title>Linux - Environment</title>
 
 		<link rel="stylesheet" href="reveal.js/dist/reset.css">
 		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
@@ -18,9 +18,24 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Random Forests</h1>
+					<h1>Environment variables</h1>
 					<p>Bastian Schiffthaler</p>
 				</section>
+				<section>
+						<p>Environment variables</p>
+						<ul>
+							<li class="fragment">Store essential information</li>
+							<li class="fragment">Can be used interactively and in scripts</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment"><code class="monokai-red">$PWD</code> - Your current working directory</li>
+							<li class="fragment"><code class="monokai-red">$USER</code> - Your username</li>
+							<li class="fragment"><code class="monokai-red">$HOME</code> - Your home directory</li>
+							<li class="fragment"><code class="monokai-red">$PATH</code> - A list of directories where Linux will look for programs</li>
+						</ul>
+					</section>
 			</div>
 		</div>
 
@@ -35,8 +50,8 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-				width: 1600,
-				height: 1280,
+				width: 1280,
+				height: 720,
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
