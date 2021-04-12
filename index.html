@@ -3,14 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<title>Linux - Environment</title>
-
 		<link rel="stylesheet" href="reveal.js/dist/reset.css">
 		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
 		<link rel="stylesheet" href="reveal.js/dist/theme/night.css" id="theme">
 		<link rel="stylesheet" href="reveal.js/dist/user.css">
-
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
 	</head>
@@ -22,23 +19,73 @@
 					<p>Bastian Schiffthaler</p>
 				</section>
 				<section>
-						<p>Environment variables</p>
-						<ul>
-							<li class="fragment">Store essential information</li>
-							<li class="fragment">Can be used interactively and in scripts</li>
-						</ul>
-					</section>
-					<section>
-						<ul>
-							<li class="fragment"><code class="monokai-red">$PWD</code> - Your current working directory</li>
-							<li class="fragment"><code class="monokai-red">$USER</code> - Your username</li>
-							<li class="fragment"><code class="monokai-red">$HOME</code> - Your home directory</li>
-							<li class="fragment"><code class="monokai-red">$PATH</code> - A list of directories where Linux will look for programs</li>
-						</ul>
+					<p>Most shells - like any other program language - support variables. In <code class="monokai-red">bash</code> we can do this</p>
+					<div class="fragment">
+						<pre><code class="bash" data-trim data-noescape>
+							X=abc123
+							# Curly braces are optional but good practice
+							echo ${X}
+						</code></pre>
+					</div>
+					<div class="fragment"> This prints
+						<pre><code class="bash" data-trim data-noescape>
+							abc123
+						</code></pre>
+					</div>
+				</section>
+				<section>
+					<p>Environment variables</p>
+					<ul>
+						<li class="fragment">Special variables. Overwriting them (with nonsense) will break your session</li>
+						<li class="fragment">Store essential information</li>
+						<li class="fragment">Can be used interactively and in scripts</li>
+					</ul>
+				</section>
+				<section>
+					<p>Important environment variables to know about</p>
+					<ul>
+						<li class="fragment"><code class="monokai-red">$PWD</code> - Your current working directory</li>
+						<li class="fragment"><code class="monokai-red">$USER</code> - Your username</li>
+						<li class="fragment"><code class="monokai-red">$HOME</code> - Your home directory</li>
+						<li class="fragment"><code class="monokai-red">$PATH</code> - A list of directories where Linux will look for programs</li>
+						<li class="fragment"><code class="monokai-red">$OMP_NUM_THREADS</code> - Thread parallelism for software supporting OpenMP</li>
+					</ul>
+				</section>
+				<section>
+					<p>Modifying environment variables</p>
+					<pre><code class="bash" data-trim data-noescape>
+						  # Change the number of threads used for OpenMP software
+							export OMP_NUM_THREADS=16
+							# Add another directory to the binary search PATH
+							export PATH=/home/${USER}/bin:${PATH}
+						</code></pre>
+						<p>This lasts until you log out and only for your current session</p>
+				</section>
+				<section>
+					<p>Executing programs that are not in your <code class="monokai-red">$PATH</code></p>
+					<ol>
+						<li class="fragment">Make sure the file is executable with <code class="monokai-red">chmod u+x</code></li>
+						<li class="fragment">Start by giving a fully qualified path <code class="monokai-red">/path/to/program</code></li>
+						<li class="fragment">We'll learn more about paths in the "Filesystem" lecture</li>
+					</ol>
+				</section>
+				<section>
+					<iframe class="stretch" data-src="https://tmate.io/t/bschiffthaler/public"></iframe>
+				</section>
+				<section>
+					<p>Your working directory <code class="monokai-red">$PWD</code></p>
+					<ul>
+						<li class="fragment">The directory in which your shell currently executes</li>
+						<li class="fragment">Defaults usually to <code class="monokai-red">$HOME</code> after login</li>
+						<li class="fragment">Check with the <code class="monokai-red">pwd</code> builtin</li>
+						<li class="fragment">Change with the <code class="monokai-red">cd</code> builtin</li>
+					</ul>
+				</section>
+				<section>
+						<iframe class='stretch' allowfullscreen='true' allowtransparency='true' frameborder='0' data-src='https://www.mentimeter.com/embed/d08bb56d14cb7ac4c43f26fe52de8270/91317ee9c79d'></iframe>
 					</section>
 			</div>
 		</div>
-
 		<script src="reveal.js/dist/reveal.js"></script>
 		<script src="reveal.js/plugin/notes/notes.js"></script>
 		<script src="reveal.js/plugin/markdown/markdown.js"></script>
@@ -52,7 +99,6 @@
 				hash: true,
 				width: 1280,
 				height: 720,
-
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
 			});
